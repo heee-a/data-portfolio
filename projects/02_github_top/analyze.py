@@ -51,7 +51,6 @@ def chart_year(df: pd.DataFrame) -> Path:
 
 
 def chart_star_distribution(df: pd.DataFrame) -> Path:
-    import numpy as np
     setup_style()
     fig, ax = plt.subplots(figsize=(9, 5))
     stars = df["stars"].sort_values(ascending=False).reset_index(drop=True)

@@ -5,8 +5,6 @@ from __future__ import annotations
 from pathlib import Path
 
 import pandas as pd
-import pytest
-import requests
 
 from datap.fetching import Fetcher
 

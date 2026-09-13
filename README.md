@@ -10,9 +10,9 @@
 
 ## 作品速览
 
-| ![采暖效应](projects/02_air_quality/charts/heating_effect.png) | ![诞生年代](projects/02_github_top/charts/created_year.png) |
+| ![六城月均温](projects/01_weather_cities/charts/monthly_temp.png) | ![诞生年代](projects/02_github_top/charts/created_year.png) |
 |---|---|
-| [02 空气质量](projects/02_air_quality/)：17 城 PM2.5，数据推翻"北方采暖更糟"二分叙事 | [02 GitHub 画像](projects/02_github_top/)：诞生峰值 2023（AI 潮） |
+| [01 城市气象](projects/01_weather_cities/)：南北冬差 37℃ vs 夏差 13℃ | [02 GitHub 画像](projects/02_github_top/)：诞生峰值 2023（AI 潮） |
 | ![季节朴素 vs HW](projects/07_forecast/charts/forecast_2025.png) | ![数据集画像](projects/03_world_indicators/charts/china_2000_2023.png) |
 | [07 时序预测](projects/07_forecast/)：Holt-Winters 击败朴素基线 + MAPE 缺陷实录 | [03 世界指标](projects/03_world_indicators/)：中国三指标 24 年同步跃升 |
 

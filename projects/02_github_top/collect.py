@@ -31,7 +31,7 @@ def main() -> None:
                 "sort": "stars", "order": "desc",
                 "per_page": 100, "page": page,
             })
-        except RuntimeError as e:
+        except RuntimeError:
             if page > 1:  # GitHub 搜索最多返回前 1000 条，第 11 页报 422
                 print(f"page {page} 失败（搜索 API 上限 1000 条），按已获取的头部数据停止")
                 break
