@@ -48,16 +48,18 @@ def chart_china(df: pd.DataFrame) -> Path:
 def chart_income_life(df: pd.DataFrame) -> Path:
     setup_style()
     d = df[df["year"] == LATEST].dropna(subset=["gdp_pc", "life_exp"])
-    big = {"CHN", "USA", "IND", "JPN", "DEU", "BRA", "RUS", "NGA", "IDN", "KOR"}
+    big = {"CHN": "中国", "USA": "美国", "IND": "印度", "JPN": "日本",
+           "DEU": "德国", "BRA": "巴西", "RUS": "俄罗斯", "NGA": "尼日利亚",
+           "IDN": "印尼", "KOR": "韩国"}
     fig, ax = plt.subplots(figsize=(10, 5.5))
     ax.scatter(d["gdp_pc"], d["life_exp"], s=22, alpha=0.55,
                c="#4C72B0", edgecolors="none")
-    for cid in big:
+    for cid, name in big.items():
         row = d[d["country_id"] == cid]
         if len(row):
             r = row.iloc[0]
             ax.scatter(r["gdp_pc"], r["life_exp"], s=70, c="#C44E52", zorder=5)
-            ax.annotate(r["country"], (r["gdp_pc"], r["life_exp"]), fontsize=9,
+            ax.annotate(name, (r["gdp_pc"], r["life_exp"]), fontsize=9,
                         xytext=(4, 4), textcoords="offset points")
     ax.set_xscale("log")
     corr = d[["gdp_pc", "life_exp"]].corr().iloc[0, 1]

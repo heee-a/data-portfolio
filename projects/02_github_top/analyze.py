@@ -45,7 +45,7 @@ def chart_year(df: pd.DataFrame) -> Path:
     ax2.grid(False)
     ax2.set_ylabel("星标中位数")
     ax.set_ylabel("仓库数")
-    ax.set_title("头部仓库的诞生年代：2013-2018 是超级项目爆发期")
+    ax.set_title("头部仓库诞生年代：2023 年（AI 潮）创峰值，2013-2018 为上一轮爆发期")
     ax.tick_params(axis="x", rotation=45)
     return save_chart(fig, CHARTS / "created_year.png")
 

@@ -1,8 +1,20 @@
 # data-portfolio · 数据采集与分析作品集
 
+[![CI](https://github.com/heee-a/data-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/heee-a/data-portfolio/actions/workflows/ci.yml)
+[![Python](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
 面向数据分析岗位的实战作品集：**七个**完整的小项目，覆盖采集、SQL、统计推断、
 文本挖掘、时序预测、可视化。每个项目都走完 **数据 → 清洗 → 分析 → 结论** 全链路。
 所有数据、图表、结论均由仓库内脚本从公开数据源真实采集生成，可一键复现。
+
+## 作品速览
+
+| ![六城月均温](projects/01_weather_cities/charts/monthly_temp.png) | ![Preston曲线](projects/03_world_indicators/charts/income_life.png) |
+|---|---|
+| [01 城市气象](projects/01_weather_cities/)：南北冬差 37℃ vs 夏差 13℃ | [03 世界指标](projects/03_world_indicators/)：收入-寿命 Preston 曲线 |
+| ![语言构成](projects/02_github_top/charts/language.png) | ![四季如春](projects/05_stats_inference/charts/test3_kunming.png) |
+| [02 GitHub 画像](projects/02_github_top/)：Python 占 23%，AI 潮创诞生峰值 | [05 统计推断](projects/05_stats_inference/)：「四季如春」的统计验证 |
 
 ## 项目一览
 

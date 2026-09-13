@@ -10,6 +10,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 
 from datap.plotstyle import save_chart, setup_style
@@ -56,8 +57,7 @@ def _slope(x: pd.DataFrame) -> float:
     yearly = x.groupby("year")["tmean"].mean()
     if yearly.notna().sum() < 3:
         return float("nan")
-    return pd.Series(yearly.values, index=yearly.index).pipe(
-        lambda s: __import__("numpy").polyfit(s.index, s.values, 1)[0])
+    return float(np.polyfit(yearly.index, yearly.values, 1)[0])
 
 
 def chart_monthly(df: pd.DataFrame) -> Path:
