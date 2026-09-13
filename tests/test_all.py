@@ -80,3 +80,36 @@ def test_world_indicators_quality():
     assert df["year"].between(2000, 2023).all()
     assert df["country_id"].nunique() >= 200
     assert (df["value"] >= 0).all()                  # 四个指标都非负
+
+
+# ---------------- 新增项目（SQL / 预测 / 文本） ----------------
+def test_sqlite_db_quality():
+    import sqlite3
+
+    db = REPO / "projects/04_sql_analysis/data/world.db"
+    with sqlite3.connect(db) as conn:
+        facts = pd.read_sql_query("SELECT * FROM indicators", conn)
+        dims = pd.read_sql_query("SELECT * FROM countries", conn)
+    assert len(facts) == 20330
+    assert len(dims) == 217
+    assert set(facts["indicator_code"]) == {
+        "NY.GDP.PCAP.CD", "SP.DYN.LE00.IN", "EN.GHG.CO2.PC.CE.AR5", "SP.URB.TOTL.IN.ZS"}
+
+
+def test_sql_report_covers_all_questions():
+    text = (REPO / "projects/04_sql_analysis/report.md").read_text(encoding="utf-8")
+    for i in range(1, 11):
+        assert f"q{i:02d}" in text.lower() or f"Q{i:02d}" in text
+
+
+def test_backtest_scores():
+    s = pd.read_csv(REPO / "projects/07_forecast/data/backtest_scores.csv")
+    assert len(s) == 6 and set(s["model"]) == {"季节朴素基线", "Holt-Winters"}
+    assert (s["mae"] < 5).all()                      # 月均温预测误差应在几度内
+
+
+def test_word_freq_output():
+    w = pd.read_csv(REPO / "projects/06_text_mining/data/word_freq.csv",
+                    index_col=0).iloc[:, 0]
+    assert len(w) == 30
+    assert (w.diff().dropna() <= 0).all()            # 按词频降序

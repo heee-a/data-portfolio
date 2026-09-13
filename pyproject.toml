@@ -21,6 +21,9 @@ dependencies = [
     "requests>=2.31",
     "pandas>=2.0",
     "matplotlib>=3.7",
+    "scipy>=1.10",
+    "statsmodels>=0.14",
+    "jieba>=0.42",
 ]
 
 [project.optional-dependencies]
