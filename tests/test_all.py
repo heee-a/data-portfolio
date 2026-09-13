@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import sys
 from pathlib import Path
 
 import pandas as pd
@@ -111,3 +112,32 @@ def test_word_freq_output():
                     index_col=0).iloc[:, 0]
     assert len(w) == 30
     assert (w.diff().dropna() <= 0).all()            # 按词频降序
+
+
+# ---------------- 08 book scraper ----------------
+def test_parse_page_extracts_fields():
+    sys.path.insert(0, str(REPO / "projects" / "08_book_scraper"))
+    from collect import parse_page
+
+    html = """
+    <article class="product_pod">
+      <h3><a href="x.html" title="A Light in the Attic">A Light in the Attic</a></h3>
+      <p class="price_color">£51.77</p>
+      <p class="instock availability">In stock</p>
+      <p class="star-rating Three"></p>
+    </article>
+    """
+    rows = parse_page(html)
+    assert len(rows) == 1
+    assert rows[0]["title"] == "A Light in the Attic"
+    assert rows[0]["price_gbp"] == 51.77
+    assert rows[0]["rating"] == 3
+    assert rows[0]["in_stock"] is True
+
+
+def test_books_csv_quality():
+    df = pd.read_csv(REPO / "projects/08_book_scraper/data/books_raw.csv")
+    assert 990 <= len(df) <= 1000
+    assert df["title"].is_unique
+    assert df["price_gbp"].between(0, 100).all()
+    assert set(df["rating"]) <= {1, 2, 3, 4, 5}

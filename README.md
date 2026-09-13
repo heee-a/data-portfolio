@@ -4,7 +4,7 @@
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-面向数据分析岗位的实战作品集：**七个**完整的小项目，覆盖采集、SQL、统计推断、
+面向数据分析岗位的实战作品集：**八个**完整的小项目，覆盖采集、SQL、统计推断、
 文本挖掘、时序预测、可视化。每个项目都走完 **数据 → 清洗 → 分析 → 结论** 全链路。
 所有数据、图表、结论均由仓库内脚本从公开数据源真实采集生成，可一键复现。
 
@@ -35,6 +35,7 @@
 | 05 | [统计推断](projects/05_stats_inference/) | **假设检验** | 复用01数据 | t/Mann-Whitney/Levene、效应量、Bootstrap CI、负结果报告 |
 | 06 | [文本挖掘](projects/06_text_mining/) | **NLP 轻量** | 复用02数据 | jieba 分词、停用词、二连词、口径诚实 |
 | 07 | [时序预测](projects/07_forecast/) | **预测建模** | 复用01数据 | 回测切分、朴素基线纪律、MAPE 缺陷实录 |
+| 08 | [HTML 爬虫](projects/08_book_scraper/) | **HTML 解析** | books.toscrape.com（官方沙盒） | CSS 选择器、分页循环、1000 本图书结构化 |
 
 每个项目的目录里都有独立的 README（数据来源、清洗口径、结论、复现命令），
 以及 `collect.py` / `analyze.py`（或 build_db.py + run_queries.py 等对应脚本）。
